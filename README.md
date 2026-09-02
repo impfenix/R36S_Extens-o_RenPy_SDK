@@ -1,24 +1,39 @@
 # Ren'Py SDK Mods & Console Tools
 
-Uma extensão para a Ren'Py SDK/Launcher que adiciona opção de construir/compilar para consoles linux tipo R36s com cfw darkOS/ArkOS e afins. Além disso, adiciona uma opção para incluir um menu de ajuste in-game para personalizar tamanho e posição das fontes do diálogo e menu rápido, e adicionar o seletor de idiomas no menu de preferências do jogo (ainda requer fazer a tradução manualmente).
+Uma extensão para a Ren'Py SDK/Launcher que adiciona opções avançadas para desenvolvedores e modders. Este pacote permite otimizar e compilar jogos para consoles portáteis Linux (como R36s com ArkOS/DaarkOS), além de injetar menus de ajuste de interface (UI) em tempo real e corrigir o fluxo de extração de diálogos.
 
-Desenvolvido por **Luana** ([@impfenix](https://github.com/impfenix)).
+Desenvolvido por **([@impfenix](https://github.com/impfenix)).**
 
 ---
 
-## 🛠️ O que tem neste repositório?
+## 🛠️ Ferramentas Inclusas
 
-### 1. `renpy_mod_tools.sh` (O Patcher do SDK)
-Este script é executado no seu **computador/PC**. Ele modifica os arquivos internos da engine do Ren'Py SDK para adicionar um novo painel de ferramentas diretamente na interface do Launcher. 
+### 1. Ren'Py SDK Mod Patcher (PC - Windows e Linux)
+Scripts (`renpy_mod_tools.sh` e `renpy_mod_tools.bat`) executados no seu computador para modificar o Ren'Py SDK. Eles injetam novas funcionalidades de forma nativa e invisível diretamente na seção **Ações** da página inicial do Launcher.
 
 **Recursos adicionados ao SDK:**
-* **Corrigir e Extrair Diálogos:** Antes de extrair traduções nativamente, a engine executa o `unrpa` corretamente e roda `find -name "*.rpyc" -type f -delete` no projeto, forçando a leitura limpa sem conflitos.
-* **Injetar Menu de Ajustes de UI:** Adiciona o código flutuante de configuração diretamente nos arquivos do seu projeto com um clique.
-* **Compilar para R36s (ArkOS/DaarkOS):** Otimiza a pasta do jogo deletando dependências de Windows, Mac e Linux 32-bit, além de aplicar permissão de execução (`chmod +x`) aos executáveis `.sh`.
+* **Extrair Diálogos (unrpa + del .rpyc):** Corrige a extração padrão da engine. Executa o `unrpa` silenciosamente na pasta do jogo e deleta os arquivos `.rpyc` para evitar conflitos de cache, forçando a leitura limpa dos scripts `.rpy` modificados.
+* **Injetar Menu de Ajustes de UI:** Adiciona um painel flutuante arrastável dentro do jogo selecionado. Permite ajustar em tempo real (com botões `+` e `-`) o tamanho e a posição vertical (eixo Y) da caixa de nome, do texto de diálogo e do menu rápido. Excelente para consertar layouts que quebram após a troca de fontes em traduções.
+* **Compilar para R36s (ArkOS/DaarkOS):** Prepara a pasta do jogo para rodar nativamente em portáteis baseados em ARM. Remove bibliotecas pesadas e redundantes (Windows, Mac, Linux 32-bit), deleta executáveis desnecessários e aplica permissões de execução (`chmod +x`) aos `.sh` principais.
 
-**Como usar:**
-Execute o arquivo pelo terminal do seu Linux (ou WSL):
-```bash
-chmod +x renpy_mod_tools.sh
-./renpy_mod_tools.sh
-```
+### 2. Menu de Ajuste Renpy (Console Portátil)
+Um script (`menu de Ajuste Renpy.sh`) desenhado para rodar diretamente no seu console portátil. 
+
+**O que ele faz:**
+Através de uma interface amigável baseada em `dialog`, ele varre os cartões SD (`/roms`) buscando jogos Ren'Py instalados e permite aplicar correções diretamente pelo console:
+* Descompacta arquivos `.rpa`.
+* Injeta o Menu de Ajuste de UI para você consertar o layout da tela diretamente pelo aparelho.
+* Apaga o cache de compilação (`.rpyc`) local e inicializa o jogo logo em seguida.
+
+---
+
+## 🚀 Como Usar
+
+### Modificando o Ren'Py SDK (No Computador)
+1. Baixe o script correspondente ao seu sistema operacional:
+   * **Linux:** `renpy_mod_tools.sh`
+   * **Windows:** `renpy_mod_tools.bat`
+2. **Linux:** Dê permissão de execução e rode no terminal:
+   ```bash
+   chmod +x renpy_mod_tools.sh
+   ./renpy_mod_tools.sh
