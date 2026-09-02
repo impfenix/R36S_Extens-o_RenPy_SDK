@@ -37,3 +37,21 @@ Através de uma interface amigável baseada em `dialog`, ele varre os cartões S
    ```bash
    chmod +x renpy_mod_tools.sh
    ./renpy_mod_tools.sh
+
+Windows: Dê um duplo clique no arquivo .bat.
+3. Quando solicitado pelo prompt, cole o caminho completo da pasta onde o seu Ren'Py SDK está instalado.
+4. Abra o Ren'Py SDK. As novas opções estarão integradas perfeitamente na aba Ações da interface inicial.
+
+Usando a Ferramenta Direto no Console (R36s / ArkOS)
+Copie o arquivo menu de Ajuste Renpy.sh para a pasta de ferramentas ou scripts do seu console (geralmente /roms/tools/ ou /roms/ports/).
+
+Acesse a seção de Tools/Ports no menu do EmulationStation e inicie o script.
+
+Use o D-Pad ou Analógico para selecionar o jogo na lista.
+
+Pressione A para confirmar e aplicar os mods no jogo selecionado, ou B para cancelar e sair.
+
+📋 Requisitos
+Para PC: Ren'Py SDK instalado. A ferramenta unrpa (pip install unrpa) deve estar no PATH do sistema para que a função de extração rápida funcione.
+
+Para Console: Sistema operacional baseado em Linux (ArkOS, DaarkOS, AmberELEC) com o pacote dialog nativo   
